@@ -42,9 +42,13 @@ Route::group(['prefix'=>'admin'],function (){
     });
     //route tin tuc
     Route::group(['prefix'=>'tintuc'],function(){
-        Route::get('index','TinTucController@index')->name('tintuc.index');
-        Route::get('edit','TinTucController@edit')->name('tintuc.edit');
-        Route::get('add','TinTucController@add')->name('tintuc.add');
+        Route::get('ajax','Admin\TinTucController@index_ajax')->name('tintuc.ajax');
+        Route::get('index','Admin\TinTucController@index')->name('tintuc.index');
+        Route::get('edit/{id}','Admin\TinTucController@edit')->name('tintuc.edit');
+        Route::post('update/{id}','Admin\TinTucController@edit')->name('tintuc.edit');
+        Route::get('create','Admin\TinTucController@create')->name('tintuc.create');
+        Route::post('store','Admin\TinTucController@store')->name('tintuc.store');
+        Route::post('destroy/{id}','Admin\TinTucController@destroy')->name('tintuc.destroy');
     });
     //route user
     Route::group(['prefix'=>'user'],function(){
