@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\LoaiTin;
 use App\TheLoai;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;

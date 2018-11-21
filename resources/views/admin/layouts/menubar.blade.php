@@ -43,7 +43,7 @@
                 <a href="#"><i class="fa fa-cube fa-fw"></i> Tin tức<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('loaitin.index')}}">Danh sách</a>
+                        <a href="{{route('tintuc.index')}}">Danh sách</a>
                     </li>
                     <li>
                         <a href="{{route('loaitin.create')}}">Thêm tin tức</a>
