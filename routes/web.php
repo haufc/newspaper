@@ -34,10 +34,10 @@ Route::group(['prefix'=>'admin'],function (){
     Route::group(['prefix'=>'loaitin'],function(){
         Route::get('index','Admin\LoaiTinController@index')->name('loaitin.index');
         Route::get('edit/{id}','Admin\LoaiTinController@edit')->name('loaitin.edit');
-        Route::post('update/{id}','Admin\LoaiTinController@edit')->name('loaitin.edit');
+        Route::post('update/{id}','Admin\LoaiTinController@update')->name('loaitin.update');
         Route::get('create','Admin\LoaiTinController@create')->name('loaitin.create');
         Route::post('store','Admin\LoaiTinController@store')->name('loaitin.store');
-        Route::post('destroy/{id}','Admin\LoaiTinController@destroy')->name('loaitin.destroy');
+        Route::get('destroy/{id}','Admin\LoaiTinController@destroy')->name('loaitin.destroy');
 
     });
     //route tin tuc
@@ -59,3 +59,7 @@ Route::group(['prefix'=>'admin'],function (){
         Route::get('add','SlideController@add')->name('slide.add');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

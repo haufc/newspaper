@@ -48,7 +48,7 @@ class TheLoaiController extends Controller
         $model->Ten = $request->Ten;
         $model->TenKhongDau= $request->TenKhongDau;
         $model->save();
-        return back()->with('thongbao');
+        return back()->with('thongbao','Thêm thành công');
 
     }
 

@@ -22,8 +22,16 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </li>
+
             </ul>
             <!-- /.dropdown-user -->
         </li>

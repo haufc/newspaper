@@ -71,7 +71,8 @@ class LoaiTinController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = LoaiTin::find($id);
+        return view('admin.loaitin.edit',compact('model'));
     }
 
     /**
@@ -83,7 +84,15 @@ class LoaiTinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $model = LoaiTin::find($id);
+        $this->validate($request,[
+            'Ten'=>'required|min:3|max:100',
+        ],['Ten.required'=>'Bạn chưa nhập tên','Ten.min'=>'Tên phải có từ 3 ký tự','Ten.max'=>'Tên phải ngắn hơn 100 ký tự']);
+        $model->Ten = $request->Ten;
+        $model->TenKhongDau= $request->TenKhongDau;
+        $model->save();
+        return redirect('admin/loaitin/edit/'.$id)->with('thongbao','Sửa thành công');
     }
 
     /**
@@ -94,6 +103,12 @@ class LoaiTinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $listLT = DB::table('loaitin')->where('id',$id)->get();
+        foreach ($listLT as $item){
+            DB::table('tintuc')->where('idLoaiTin',$item->id)->delete();
+        }
+        DB::table('loaitin')->where('id',$id)->delete();
+        return back();
+
     }
 }

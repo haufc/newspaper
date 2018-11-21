@@ -27,8 +27,8 @@
                             <td>{{$item->Ten}}</td>
                             <td>{{$item->TenKhongDau}}</td>
                             <td>{{$item->idTheLoai}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('loaitin.destroy',$item->id)}}"> Delete</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('loaitin.edit',$item->id)}}">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>
