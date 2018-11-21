@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\LoaiTin;
-use App\TheLoai;
 use App\TinTuc;
 use Response;
+use DB;
+use Vmorozov\FileUploads\Uploader;
 class TinTucController extends Controller
 {
     /**
@@ -34,7 +34,9 @@ class TinTucController extends Controller
      */
     public function create()
     {
-       
+        // $model = LoaiTin::all('Ten','id')->get();
+        $model =DB::table('loaitin')->get();
+       return view('admin.tintuc.create',compact('model'));
     }
 
     /**
@@ -45,7 +47,18 @@ class TinTucController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $model = new TinTuc;
+       $model->Hinh = Uploader::uploadFile($request->file('Hinh'), 'upload/tintuc');
+       $model->TieuDe = $request->tieude;
+       $model->TieuDeKhongDau = $request->tieude_khongdau;
+       $model->TomTat = $request->tomtat;
+       $model->Noidung = $request->noidung;
+       $model->NoiBat = 1;
+       $model->SoLuotXem = 0;
+       $model->idLoaiTin = $request->idLoaiTin;
+       $model->save();
+       return back();
+       
     }
 
     /**
@@ -67,7 +80,7 @@ class TinTucController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.tintuc.edit');
     }
 
     /**

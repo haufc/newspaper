@@ -10,40 +10,39 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST">
+                    
+                    <form action="{{route('tintuc.store')}}" method="POST" enctype="multipart/form-data" >
+                        <input type="hidden" name="_token"  value="{{ csrf_token() }}">
                         <div class="form-group">
-                            <label>Category Parent</label>
-                            <select class="form-control">
-                                <option value="0">Please Choose Category</option>
-                                <option value="">Tin Tức</option>
+                            <label>Loại Tin</label>
+                            <select class="form-control" id="loaitin" name="idLoaiTin">
+                                
+                                @foreach ($model as $l)
+                            <option value="{{$l->id}}">{{$l->Ten}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Category Name</label>
-                            <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                            <label>Tiêu đề</label>
+                            <input class="form-control" name="tieude" placeholder="Nhập tiêu đề" required/>
                         </div>
                         <div class="form-group">
-                            <label>Category Order</label>
-                            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                            <label>Tiêu đề (Không dấu)</label>
+                            <input class="form-control" name="tieude_khongdau" placeholder="Tiêu đề không dấu" required/>
                         </div>
                         <div class="form-group">
-                            <label>Category Keywords</label>
-                            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                            <label>Tóm tắt</label>
+                            <input class="form-control" name="tomtat" placeholder="Tóm tắt" required/>
                         </div>
                         <div class="form-group">
-                            <label>Category Description</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label>Nội dung</label>
+                            <textarea class="form-control" name="noidung" rows="3" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Category Status</label>
-                            <label class="radio-inline">
-                                <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                            </label>
-                            <label class="radio-inline">
-                                <input name="rdoStatus" value="2" type="radio">Invisible
-                            </label>
+                                <label>Ảnh</label>
+                                <input type="file" class="form-control-file" name="Hinh" id="Hinh" required/>
                         </div>
-                        <button type="submit" class="btn btn-default">Category Add</button>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     </form>
                 </div>
