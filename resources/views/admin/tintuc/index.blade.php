@@ -4,15 +4,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> Category
-                        <small>List</small>
+                    <h1 class="page-header"> Tin tức
+                        <small>Danh sách</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                     <tr align="center">
-                        <th>STT</th>
+                        <th>ID</th>
                         <th>Tiêu đề</th>
                         <th>Tóm tắt</th>
                         <th>Thumbnail</th>
@@ -59,17 +59,17 @@
     function display(data){
         $('.even gradeD').remove();
         data.forEach(e => {
+            var a = 'dcm';
            var str  = '<tr class="even gradeD" align="center"><td>'
-           + e.id + '</td><td>'
-           + e.TieuDe + '</td><td>'
-           + e.TomTat + '</td>'
-           + e.Hinh + '<td>'
-           + e.loaitin + '</td><td>'
-           + e.SoLuotXem+'</td><td>'
-           +e.NoiBat+'</td><td>'
-           + e.created_at + '</td><td class="center"></td><td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td></tr>';
+           + e.id         + '</td><td>'
+           + e.TieuDe     + '</td><td>'
+           + e.TomTat     + '</td><td>'
+           + e.Hinh       + '</td><td>'
+           + e.idLoaiTin  + '</td><td>'
+           + e.SoLuotXem  + '</td><td>'
+           + e.NoiBat     + '</td><td>'
+           + e.created_at + '</td><td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td></tr>';
         $('tbody').append(str);
-            console.log(e.Hinh);
         });
     }
    display(data);
