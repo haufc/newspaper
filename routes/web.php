@@ -12,12 +12,13 @@
 */
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::get('test',function (){
     return view('admin.theloai.index');
 });
+Route::get('/','Client\HomeController@index')->name('theloai.index');
 //route admin
 Route::group(['prefix'=>'admin'],function (){
     //rout the loai
